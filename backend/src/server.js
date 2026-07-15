@@ -6,14 +6,8 @@ const PORT = process.env.PORT || 5000;
 
 async function startServer() {
   try {
-    try {
-      await connectDatabase(process.env.MONGODB_URI);
-      console.log("Connected to primary MongoDB.");
-    } catch (dbError) {
-      console.warn("Failed to connect to primary DB, falling back to local DB:", dbError.message);
-      await connectDatabase("mongodb://127.0.0.1:27017/taxguru_ai");
-      console.log("Connected to fallback local MongoDB.");
-    }
+    await connectDatabase(process.env.MONGODB_URI);
+    console.log("Connected to MongoDB.");
 
     app.listen(PORT, () => {
       console.log(`TaxGuru AI backend running on port ${PORT}`);
