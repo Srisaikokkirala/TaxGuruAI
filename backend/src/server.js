@@ -1,5 +1,4 @@
 require("dotenv").config();
-console.log(process.env.OPENAI_API_KEY);
 const app = require("./app");
 const { connectDatabase } = require("./config/db");
 
