@@ -13,3 +13,6 @@ backend/.env
 backend/.env.*
 frontend/.env
 frontend/.env.*
+
+# Uploaded tax documents (stored permanently on server, not committed)
+backend/uploads/tax-documents/*.pdf

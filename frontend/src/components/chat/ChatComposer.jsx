@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowUp, Square } from 'lucide-react';
 import Button from '@/components/ui/Button';
+import PdfUploadButton from '@/components/chat/PdfUploadButton';
+import { useChat } from '@/context/ChatContext';
 
 export default function ChatComposer({ onSend, onStop, disabled = false, loading = false }) {
+  const { activeChatId } = useChat();
   const [value, setValue] = useState('');
   const textareaRef = useRef(null);
 
@@ -42,6 +45,7 @@ export default function ChatComposer({ onSend, onStop, disabled = false, loading
           <p className="text-xs text-slate-450">Press Enter to send, Shift+Enter for a new line.</p>
 
           <div className="flex items-center gap-2">
+            <PdfUploadButton chatId={activeChatId} />
             {loading ? (
               <Button variant="secondary" size="sm" onClick={onStop}>
                 <Square size={14} />

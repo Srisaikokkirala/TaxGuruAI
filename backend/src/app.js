@@ -6,6 +6,7 @@ const rateLimit = require("express-rate-limit");
 const { clerkMiddleware } = require("@clerk/express");
 const chatRoutes = require("./routes/chatRoutes");
 const authRoutes = require("./routes/authRoutes");
+const documentRoutes = require("./routes/documentRoutes");
 const notFound = require("./middleware/notFound");
 const errorHandler = require("./middleware/errorHandler");
 
@@ -36,6 +37,7 @@ app.get("/health", (req, res) => {
 
 app.use("/auth", authRoutes);
 app.use("/", chatRoutes);
+app.use("/", documentRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
